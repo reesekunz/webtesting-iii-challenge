@@ -7,42 +7,39 @@ import { render, fireEvent } from "@testing-library/react";
 import Dashboard from "./Dashboard";
 
 
-describe('<Dashboard />', () => {
-    it('should match snapshot', () => {
-      const tree = renderer.create(<Dashboard />).toJSON(); // generates a DOM tree
+describe("<Dashboard />", () => {
+    it("matches snapshot", () => {
+      const tree = renderer.create(<Dashboard />); // generates a DOM tree
   
-      expect(tree).toMatchSnapshot();  // snapshots are a JSON representation of the DOM tree
+      // snapshots are a JSON representation of the DOM tree
+      expect(tree.toJSON()).toMatchSnapshot();
     });
-
-    it("displays if gate is open/closed and if it is locked/unlocked", () => {
-    const { getByText } = render(<Dashboard />);
-
-    getByText(/open/i);
-    getByText(/close/i);
-    getByText(/lock/i);
-    getByText(/unlocked/i);
-});
-
-describe("Closed", () => {
-    it('Should display closed if prop is true and open if false', () => {
-      const { getByTestId, queryByText } = render(<Dashboard />);
+  });
   
-      expect(queryByText(/bark/i)).toBeFalsy();
+ 
   
-      fireEvent.click(getByTestId(/speak/i));
+  describe("open/unlock", () => {
+    it('Should dispaly open/unlock on render', () => {
+      const { queryByText } = render(<Dashboard />);
   
-      expect(queryByText(/bark/i)).toBeTruthy();
+      expect(queryByText(/open/i)).toBeTruthy();
+    
+      expect(queryByText(/unlock/i)).toBeTruthy();
     });
   });
 
-  describe("Locked", () => {
-    it('Should display locked if prop is true and unlocked if false', () => {
-      const { getByTestId, queryByText } = render(<Dashboard/>);
-  
-      expect(queryByText(/bark/i)).toBeFalsy();
-  
-      fireEvent.click(getByTestId(/speak/i));
-  
-      expect(queryByText(/bark/i)).toBeTruthy();
+   
+  describe("toggle buttons on lock", () => {
+    it("Cant toggle open/close buttons when locked", () => {
+      const { queryByText, getByTestId } = render(<Dashboard />);
+
+    const openCloseButton = getByTestId("open-close")
+    const lockUnlockButton = getByTestId("lock-unlock")
+
+    fireEvent.click(openCloseButton);
+    fireEvent.click(lockUnlockButton);
+    expect(queryByText(/closed/i)).toBeTruthy;
+
     });
   });
+

@@ -83,8 +83,10 @@ This section is **optional** and not counted towards MVP. Start working on it af
 
 <!-- Terminal Steps  -->
 yarn add -D @testing-library/react react-test-renderer
+yarn add --dev babel-jest babel-core@^7.0.0-0 @babel/core
 yarn test 
 (had to do yarn upgrade on Mac to get test to work)
+
 
 
 

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Dashboard /> should match snapshot 1`] = `
+exports[`<Dashboard /> matches snapshot 1`] = `
 Array [
   <div
     className="display panel"
@@ -21,6 +21,7 @@ Array [
   >
     <button
       className="toggle-btn"
+      data-testid="lock-unlock"
       disabled={true}
       onClick={[Function]}
     >
@@ -28,6 +29,7 @@ Array [
     </button>
     <button
       className="toggle-btn"
+      data-testid="open-close"
       disabled={false}
       onClick={[Function]}
     >
