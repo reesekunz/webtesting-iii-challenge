@@ -49,7 +49,7 @@ Your job is to write unit tests to ensure that the application behaves as expect
 
 The expected/assumed behavior of the application is listed below.
 
-### Gate
+### Gate (in Controls Component)
 
 - defaults to `unlocked` and `open`
 - cannot be closed or opened if it is locked
@@ -61,7 +61,7 @@ The expected/assumed behavior of the application is listed below.
 ### Display Component
 
 - displays if gate is open/closed and if it is locked/unlocked
-- displays 'Closed' if the `closed` prop is `true` and 'Open' if otherwise
+- displays 'Closed' if the `closed` prop is `true` and 'Open' if otherwises 
 - displays 'Locked' if the `locked` prop is `true` and 'Unlocked' if otherwise
 - when `locked` or `closed` use the `red-led` class
 - when `unlocked` or `open` use the `green-led` class
@@ -78,3 +78,13 @@ The expected/assumed behavior of the application is listed below.
 This section is **optional** and not counted towards MVP. Start working on it after you're done with the main assignment.
 
 - add `Redux` and [read this example in the docs](https://testing-library.com/docs/example-react-redux) to learn how to write tests for it.
+
+
+
+<!-- Terminal Steps  -->
+yarn add -D @testing-library/react react-test-renderer
+yarn test 
+(had to do yarn upgrade on Mac to get test to work)
+
+
+
